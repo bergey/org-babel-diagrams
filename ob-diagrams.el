@@ -37,6 +37,8 @@
   :group 'org-babel
   :type  'string)
 
+(add-to-list 'org-src-lang-modes '("diagrams" . haskell))
+
 (defun org-babel-execute:diagrams (body params)
   (let ((out-file (cdr (assoc :file params)))
         (result-type (cdr (assoc :results params))))
