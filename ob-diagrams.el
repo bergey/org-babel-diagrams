@@ -28,10 +28,14 @@
 
 (defvar org-babel-default-header-args:diagrams
   '((:results . "file")
-    (:exports . "results"))
+    (:exports . "results")
+    (:width . 300))
   "Default arguments for evaluating a ditaa source block.")
 
-(defvar org-diagrams-executable "diagrams-builder-cairo")
+(defcustom org-diagrams-executable "diagrams-builder-cairo"
+  "Path to the diagrams-builder executable"
+  :group 'org-babel
+  :type  'string)
 
 (defun org-babel-execute:diagrams (body params)
   (let ((out-file (cdr (assoc :file params)))
@@ -43,15 +47,14 @@
         (setq output
                   (shell-command-to-string
                    (format
-                    "%s \"%s\" -o\"%s\" -w300"
+                    "%s \"%s\" -o\"%s\" -w%s"
                     org-diagrams-executable
                     (org-babel-process-file-name
-                     script-file
-                     (if (member system-type '(cygwin windows-nt ms-dos))
-                         t nil))
-                    out-file)))
+                     script-file)
+                    out-file
+                    (cdr (assoc :width params)))))
         (message output)
-        nil
+        nil ;; signal that output has already been written to file
         ))))
 
 (provide 'ob-diagrams)
