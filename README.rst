@@ -3,7 +3,7 @@ Install
 
 * Put ob-diagrams.el somewhere on your load-path
 * Add ``(require 'ob-diagrams)`` to your .emacs.el
-* At the command-line, run ``cabal install diagrams-builder``
+* At the command-line, run ``cabal install diagrams-builder -fcairo``
 
 Examples
 =====
