@@ -1,3 +1,5 @@
+I am not maintaining this project.  If you would like to adopt it, please drop me a line, and I'll hand it over.
+
 Install
 =======
 
