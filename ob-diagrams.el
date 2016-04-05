@@ -1,4 +1,4 @@
-;;; ob-gnuplot.el --- org-babel functions for diagrams evaluation
+;;; ob-diagrams.el --- org-babel functions for diagrams evaluation
 
 ;; Copyright (C) 2013 Daniel Bergey
 
@@ -30,7 +30,7 @@
   '((:results . "file")
     (:exports . "results")
     (:width . 300))
-  "Default arguments for evaluating a ditaa source block.")
+  "Default arguments for drawing a diagrams image.")
 
 (defcustom org-diagrams-executable "diagrams-builder-cairo"
   "Path to the diagrams-builder executable"
