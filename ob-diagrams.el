@@ -60,3 +60,4 @@
         ))))
 
 (provide 'ob-diagrams)
+;;; ob-diagrams.el ends here
