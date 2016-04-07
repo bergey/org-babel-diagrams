@@ -46,17 +46,17 @@
       (let ((script-file (org-babel-temp-file "diagrams-input")))
         (with-temp-file script-file (insert body))
         (message "%s \"%s\"" org-diagrams-executable script-file)
-        (setq output
-                  (shell-command-to-string
-                   (format
-                    "%s \"%s\" -o\"%s\" -w%s"
-                    org-diagrams-executable
-                    (org-babel-process-file-name
-                     script-file)
-                    out-file
-                    (cdr (assoc :width params)))))
-        (message output)
+        (let ((output (shell-command-to-string
+                       (format
+                        "%s \"%s\" -o\"%s\" -w%s"
+                        org-diagrams-executable
+                        (org-babel-process-file-name
+                         script-file)
+                        out-file
+                        (cdr (assoc :width params))))))
+          (message output))
         nil ;; signal that output has already been written to file
         ))))
 
 (provide 'ob-diagrams)
+;;; ob-diagrams.el ends here
